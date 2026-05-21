@@ -66,28 +66,7 @@ pipeline {
             }
         }
 
-        stage('Quality Gate') {
-
-            steps {
-
-                script {
-
-                    try {
-
-                        waitForQualityGate abortPipeline: false
-
-                        echo "Quality Gate Passed"
-
-                    } catch (Exception e) {
-
-                        echo "Quality Gate Failed: ${e}"
-
-                        error("Stopping Pipeline")
-
-                    }
-                }
-            }
-        }
+        
 
         stage('Build Docker Image') {
 
@@ -106,6 +85,28 @@ pipeline {
                     } catch (Exception e) {
 
                         echo "Docker Build Failed: ${e}"
+
+                        error("Stopping Pipeline")
+
+                    }
+                }
+            }
+        }
+        stage('Quality Gate') {
+
+            steps {
+
+                script {
+
+                    try {
+
+                        waitForQualityGate abortPipeline: false
+
+                        echo "Quality Gate Passed"
+
+                    } catch (Exception e) {
+
+                        echo "Quality Gate Failed: ${e}"
 
                         error("Stopping Pipeline")
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask SQLite App</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            margin:40px;
+        }
+
+        input{
+            padding:10px;
+        }
+
+        button{
+            padding:10px;
+        }
+
+        table{
+            margin-top:20px;
+            border-collapse: collapse;
+            width:300px;
+        }
+
+        table, th, td{
+            border:1px solid black;
+        }
+
+        th, td{
+            padding:10px;
+            text-align:left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>User Management</h1>
+
+    <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Enter name" required>
+        <button type="submit">Add User</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+        </tr>
+
+        {% for user in users %}
+        <tr>
+            <td>{{ user[0] }}</td>
+            <td>{{ user[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

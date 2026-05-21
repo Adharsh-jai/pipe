@@ -5,58 +5,129 @@
     <title>Flask SQLite App</title>
 
     <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
         body{
-            font-family: Arial;
-            margin:40px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #141e30, #243b55);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            background:white;
+            padding:40px;
+            border-radius:15px;
+            width:400px;
+            box-shadow:0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:25px;
+            color:#243b55;
+        }
+
+        form{
+            display:flex;
+            gap:10px;
+            margin-bottom:25px;
         }
 
         input{
-            padding:10px;
+            flex:1;
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:8px;
+            outline:none;
+            font-size:14px;
+        }
+
+        input:focus{
+            border-color:#243b55;
         }
 
         button{
-            padding:10px;
+            padding:12px 18px;
+            background:#243b55;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            transition:0.3s;
+        }
+
+        button:hover{
+            background:#141e30;
         }
 
         table{
-            margin-top:20px;
-            border-collapse: collapse;
-            width:300px;
+            width:100%;
+            border-collapse:collapse;
+            overflow:hidden;
+            border-radius:10px;
         }
 
-        table, th, td{
-            border:1px solid black;
+        caption{
+            margin-bottom:10px;
+            font-weight:bold;
+            color:#243b55;
+        }
+
+        th{
+            background:#243b55;
+            color:white;
         }
 
         th, td{
-            padding:10px;
+            padding:12px;
             text-align:left;
+            border-bottom:1px solid #ddd;
         }
+
+        tr:hover{
+            background:#f5f5f5;
+        }
+
     </style>
 </head>
+
 <body>
 
-    <h1>User Management</h1>
+    <div class="container">
 
-    <form action="/add" method="POST">
-        <input type="text" name="name" placeholder="Enter name" required>
-        <button type="submit">Add User</button>
-    </form>
+        <h1>User Management</h1>
 
-    <table>
-        <caption>User Details Table</caption>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-        </tr>
+        <form action="/add" method="POST">
+            <input type="text" name="name" placeholder="Enter name" required>
+            <button type="submit">Add User</button>
+        </form>
 
-        {% for user in users %}
-        <tr>
-            <td>{{ user[0] }}</td>
-            <td>{{ user[1] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+        <table>
+            <caption>User Details Table</caption>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+
+            {% for user in users %}
+            <tr>
+                <td>{{ user[0] }}</td>
+                <td>{{ user[1] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
 
 </body>
 </html>

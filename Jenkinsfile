@@ -76,9 +76,7 @@ pipeline {
 
                     try {
 
-                        sh """
-                        docker build -t ${IMAGE_NAME} .
-                        """
+                        sh 'docker build -t myapp .'
 
                         echo "Docker Image Built Successfully"
 

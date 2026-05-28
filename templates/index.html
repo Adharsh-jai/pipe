@@ -107,6 +107,7 @@
 
         <form action="/add" method="POST">
             <input type="text" name="name" placeholder="Enter name" required>
+            <input type="text" name="Designation" placeholder="Designation" required>
             <button type="submit">Add User</button>
         </form>
 
@@ -116,12 +117,14 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Designation</th>
             </tr>
 
             {% for user in users %}
             <tr>
                 <td>{{ user[0] }}</td>
                 <td>{{ user[1] }}</td>
+                <td>{{ user[2] }}</td>
             </tr>
             {% endfor %}
 
